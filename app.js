@@ -47,7 +47,20 @@ var topics = ["candy canes", "gingerbread", "penguins", "santa", "snow", "nutcra
 		}
 	}
 
+	//Function for adding new buttons when the submit button is clicked
+	$("#add-topic").on("click", function(addTopic) {
+		addTopic.preventDefault();
+		//Grab user input:
+		var topic = $("#user-input").val().trim();
+		//Push to our topic array:
+		topics.push(topic);
+		//Call the renderButton function to add new topics as buttons
+		renderButtons();
+	});
+
 	//Calling the renderButtons to display the initial buttons
 	renderButtons();
+
+
 	
 
