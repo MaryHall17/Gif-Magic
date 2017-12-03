@@ -27,3 +27,27 @@ var rating = "G";
 var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=YS9cNoPBG3S3ShQcI9FQwNycGpX342a7&q=pizza&limit=10&offset=0&rating=G&lang=en"
 //Topic array for button values. 
 var topics = ["candy canes", "gingerbread", "penguins", "santa", "snow", "nutcracker", "the grinch"];
+
+	//Function for displaying buttons from the array
+	function renderButtons() {
+		//Deletes the previous Christmas topics
+		$("#button-view").empty();
+		//Loops through array of topics
+		for (var i = 0; i < topics.length; i++) {
+			//Generate buttons for each topic in the array
+			var button = $("<button>");
+			//Add a class of topics to button
+			button.addClass("btn btn-info");
+			//Add a data-attribute to later grab outside of this function
+			button.attr("data-name", topics[i]);
+			//Provide the button text as the topic name
+			button.text(topics[i]);
+			//Add the buttons to the button-view div
+			$("#button-view").append(button);
+		}
+	}
+
+	//Calling the renderButtons to display the initial buttons
+	renderButtons();
+	
+
