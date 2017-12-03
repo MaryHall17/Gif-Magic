@@ -11,14 +11,14 @@
 //Outside of for loop
 	//Create if-else logic for pausing/animating gifs
 	//Use whether this image is animated or still from the variable
-//Empty the gifs at each button; no prepending or appending
+//Empty the gifs at each button; no prepending or appending. .empty()?
 //Limit 10 gifs
 
 //Api key
 var magicKey = "YS9cNoPBG3S3ShQcI9FQwNycGpX342a7";
 
 //search paramater
-var q = user input
+var q = $("#user-input")
 
 //rating paramater
 var rating = "G";
