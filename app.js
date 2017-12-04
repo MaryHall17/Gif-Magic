@@ -45,7 +45,7 @@ function displayGif() {
 			//make an image tag and store it as a variable
 			var topicImage = $("<img>");
 			//sets the attribute of the source from the image results in the for loop
-			topicImage.attr("src", gifs[i].images.fixed_height.url);
+			topicImage.attr("src", gifs[i].images.fixed_height_still.url);
 			//send to the html
 			gifDiv.prepend(p);
 			gifDiv.prepend(topicImage);
