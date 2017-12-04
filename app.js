@@ -46,12 +46,10 @@ function displayGif() {
 			var p = $("<p>").text("Rating: " + gifRating);
 			//make an image tag and store it as a variable
 			var topicImage = $("<img>");
-			//sets the attribute of the source from the image results in the for loop and stores it in the variable "link"
-			var link = topicImage.attr("src", gifs[i].images.fixed_height_still.url);
 			//add class to use for the pause and animate function
-			topicImage.addClass("gif");
-			//add listening event for gifs
-			$(document).on("click", ".gif", changeState);
+			topicImage.addClass("gif");			
+			//sets the attribute of the source from the image results in the for loop and stores it in the variable "link"
+			topicImage.attr("src", gifs[i].images.fixed_height_still.url);
 			//still attribute
 			topicImage.attr("data-still", gifs[i].images.fixed_height_still.url);
 			//animated attribute
@@ -65,15 +63,39 @@ function displayGif() {
 			$("#Gif-view").prepend(gifDiv);
 
 		}
+		//add listening event
+		$(document).on("click", ".gif", changeState);
+
+
 	});
+
 } 
+ //Pause and animate gifs
+		function changeState () {
+			//retrieve the variable state from the .done function
+			var state = $(this).attr("data-state");
+			//make sure the program recognizes the state
+			console.log(state); 
+			// if else logic
+			if (state === "still") {
+				//change state to animate on click
+				$(this).attr("data-state", "animate");
+				//change link to animate on click
+				var link = $(this).attr("data-animate");
+				$(this).attr("src", link);
+			} else if (state === "animate") {
+				//change state to still on click
+				$(this).attr("data-state", "still");
+				//change link to still on click
+				var link = $(this).attr("data-still");
+				$(this).attr("src", link);
+			}
+		}
+		
 
-//Pause and animate gifs
- function changeState() {
-	var state = $(this).attr("data-state");
-	console.log(state); 
-}; 
-
+		
+ 
+	 
 
 //Topic array for button values. 
 var topics = ["christmas tree", "gingerbread", "penguins", "home alone", "snow", "the nutcracker", "the grinch"];
