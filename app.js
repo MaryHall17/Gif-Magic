@@ -25,6 +25,8 @@ function displayGif() {
 	//URL:
 	var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=YS9cNoPBG3S3ShQcI9FQwNycGpX342a7&q=" + search + "&limit=10&offset=0&rating=G&lang=en";
 
+	//Empty gifs from last button on current button click
+	$("#Gif-view").empty();
 	//Ajax call for clicked topic button
 	$.ajax({
 		url: queryURL,
@@ -56,9 +58,7 @@ function displayGif() {
 	});
 } 
 
-
-
-//queryUrl
+//Pause and animate gifs
 
 
 //Topic array for button values. 
