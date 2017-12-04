@@ -46,9 +46,18 @@ function displayGif() {
 			var p = $("<p>").text("Rating: " + gifRating);
 			//make an image tag and store it as a variable
 			var topicImage = $("<img>");
-			//sets the attribute of the source from the image results in the for loop
-			//and stores it in the still var for the pause and animate logic
-			topicImage.attr("src", gifs[i].images.fixed_height_still.url);
+			//sets the attribute of the source from the image results in the for loop and stores it in the variable "link"
+			var link = topicImage.attr("src", gifs[i].images.fixed_height_still.url);
+			//add class to use for the pause and animate function
+			topicImage.addClass("gif");
+			//add listening event for gifs
+			$(document).on("click", ".gif", changeState);
+			//still attribute
+			topicImage.attr("data-still", gifs[i].images.fixed_height_still.url);
+			//animated attribute
+			topicImage.attr("data-animate", gifs[i].images.fixed_height.url);
+			//set data-state attribute
+			topicImage.attr("data-state", "still");
 			//send to the html
 			gifDiv.prepend(p);
 			gifDiv.prepend(topicImage);
@@ -60,6 +69,10 @@ function displayGif() {
 } 
 
 //Pause and animate gifs
+ function changeState() {
+	var state = $(this).attr("data-state");
+	console.log(state); 
+}; 
 
 
 //Topic array for button values. 
