@@ -47,6 +47,7 @@ function displayGif() {
 			//make an image tag and store it as a variable
 			var topicImage = $("<img>");
 			//sets the attribute of the source from the image results in the for loop
+			//and stores it in the still var for the pause and animate logic
 			topicImage.attr("src", gifs[i].images.fixed_height_still.url);
 			//send to the html
 			gifDiv.prepend(p);
@@ -62,7 +63,7 @@ function displayGif() {
 
 
 //Topic array for button values. 
-var topics = ["candy canes", "gingerbread", "penguins", "santa", "snow", "nutcracker", "the grinch"];
+var topics = ["christmas tree", "gingerbread", "penguins", "home alone", "snow", "the nutcracker", "the grinch"];
 
 	//Function for displaying buttons from the array
 	function renderButtons() {
