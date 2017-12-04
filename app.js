@@ -30,8 +30,29 @@ function displayGif() {
 		url: queryURL,
 		method: "GET"
 	}).done(function(response) {
-		console.log(search);
-		$("#Gif-view").html(JSON.stringify(response.data.images));
+		//store results from the api in a variable
+		var gifs = response.data;
+		//make sure we are grabbing the api by testing it in the console
+		console.log(gifs);
+		//loop through the results to display the gif as a still and the rating
+		for (var i = 0; i < gifs.length; i++) {
+			//add a div for each gif and store it as a variable
+			var gifDiv = $("<div class = 'gifTopic'>")
+			//stores the rating from the looped results as a variable
+			var gifRating = gifs[i].rating;
+			//stores a paragraph to send to the dom with the results as the text
+			var p = $("<p>").text("Rating: " + gifRating);
+			//make an image tag and store it as a variable
+			var topicImage = $("<img>");
+			//sets the attribute of the source from the image results in the for loop
+			topicImage.attr("src", gifs[i].images.fixed_height.url);
+			//send to the html
+			gifDiv.prepend(p);
+			gifDiv.prepend(topicImage);
+
+			$("#Gif-view").prepend(gifDiv);
+
+		}
 	});
 } 
 
