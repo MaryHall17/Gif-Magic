@@ -45,6 +45,8 @@ function displayGif() {
 			var gifRating = gifs[i].rating;
 			//stores a paragraph to send to the dom with the results as the text
 			var p = $("<p>").text("Rating: " + gifRating);
+			//add bootstrap class
+			p.addClass("col-sm-12");
 			//make an image tag and store it as a variable
 			var topicImage = $("<img>");		
 			//sets the attribute of the source from the image results in the for loop and stores it in the variable "link"
@@ -57,9 +59,11 @@ function displayGif() {
 			topicImage.attr("data-state", "still");
 			//add class to use for the pause and animate function
 			topicImage.addClass("gif");	
+			//add bootstrap class
+			topicImage.addClass("col-sm-12");
 			//send to the html
 			gifDiv.prepend(p);
-			gifDiv.prepend(topicImage);
+			gifDiv.append(topicImage);
 
 			$("#Gif-view").prepend(gifDiv);
 
