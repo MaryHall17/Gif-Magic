@@ -25,13 +25,14 @@ function displayGif() {
 	//URL:
 	var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=YS9cNoPBG3S3ShQcI9FQwNycGpX342a7&q=" + search + "&limit=10&offset=0&rating=G&lang=en";
 
-	//Empty gifs from last button on current button click
-	$("#Gif-view").empty();
 	//Ajax call for clicked topic button
 	$.ajax({
 		url: queryURL,
 		method: "GET"
 	}).done(function(response) {
+		//Empty gifs from last button on current button click
+		$("#Gif-view").empty();
+
 		//store results from the api in a variable
 		var gifs = response.data;
 		//make sure we are grabbing the api by testing it in the console
@@ -45,9 +46,7 @@ function displayGif() {
 			//stores a paragraph to send to the dom with the results as the text
 			var p = $("<p>").text("Rating: " + gifRating);
 			//make an image tag and store it as a variable
-			var topicImage = $("<img>");
-			//add class to use for the pause and animate function
-			topicImage.addClass("gif");			
+			var topicImage = $("<img>");		
 			//sets the attribute of the source from the image results in the for loop and stores it in the variable "link"
 			topicImage.attr("src", gifs[i].images.fixed_height_still.url);
 			//still attribute
@@ -56,6 +55,8 @@ function displayGif() {
 			topicImage.attr("data-animate", gifs[i].images.fixed_height.url);
 			//set data-state attribute
 			topicImage.attr("data-state", "still");
+			//add class to use for the pause and animate function
+			topicImage.addClass("gif");	
 			//send to the html
 			gifDiv.prepend(p);
 			gifDiv.prepend(topicImage);
@@ -63,13 +64,15 @@ function displayGif() {
 			$("#Gif-view").prepend(gifDiv);
 
 		}
-		//add listening event
-		$(document).on("click", ".gif", changeState);
 
 
 	});
 
 } 
+
+//add listening event outside of function for gifs
+	$(document).on("click", ".gif", changeState);
+ 
  //Pause and animate gifs
 		function changeState () {
 			//retrieve the variable state from the .done function
@@ -90,7 +93,7 @@ function displayGif() {
 				var link = $(this).attr("data-still");
 				$(this).attr("src", link);
 			}
-		}
+		};
 		
 
 		
